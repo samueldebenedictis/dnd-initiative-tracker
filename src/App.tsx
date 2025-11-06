@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import ParticipantList from './components/ParticipantList';
-import AddParticipantForm from './components/AddParticipantForm';
+import type React from "react";
+import { useEffect, useState } from "react";
+import AddParticipantForm from "./components/AddParticipantForm";
+import ParticipantList from "./components/ParticipantList";
 
 interface Participant {
   id: number;
@@ -12,32 +13,50 @@ interface Participant {
 
 function App() {
   const [participants, setParticipants] = useState<Participant[]>(() => {
-    const savedParticipants = localStorage.getItem('initiativeTrackerParticipants');
-    return savedParticipants ? JSON.parse(savedParticipants).map((p: { hp: string; } ) => ({ ...p, hp: parseInt(p.hp) || 0 })) : [];
+    const savedParticipants = localStorage.getItem(
+      "initiativeTrackerParticipants",
+    );
+    return savedParticipants
+      ? JSON.parse(savedParticipants).map((p: { hp: string }) => ({
+          ...p,
+          hp: parseInt(p.hp) || 0,
+        }))
+      : [];
   });
-  const [newParticipant, setNewParticipant] = useState<Omit<Participant, 'id'>>({
-    name: '',
-    initiative: 0,
-    hp: 0,
-    ac: '',
-  });
+  const [newParticipant, setNewParticipant] = useState<Omit<Participant, "id">>(
+    {
+      name: "",
+      initiative: 0,
+      hp: 0,
+      ac: "",
+    },
+  );
 
   useEffect(() => {
-    localStorage.setItem('initiativeTrackerParticipants', JSON.stringify(participants));
+    localStorage.setItem(
+      "initiativeTrackerParticipants",
+      JSON.stringify(participants),
+    );
   }, [participants]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const parsedValue = (name === 'initiative' || name === 'hp') ? (parseInt(value) || 0) : value;
+    const parsedValue =
+      name === "initiative" || name === "hp" ? parseInt(value) || 0 : value;
     setNewParticipant({ ...newParticipant, [name]: parsedValue });
   };
 
   const addParticipant = () => {
     if (newParticipant.name && newParticipant.initiative) {
-      const updatedParticipants = [...participants, { ...newParticipant, id: Date.now() }];
-      const sortedParticipants = updatedParticipants.sort((a, b) => b.initiative - a.initiative);
+      const updatedParticipants = [
+        ...participants,
+        { ...newParticipant, id: Date.now() },
+      ];
+      const sortedParticipants = updatedParticipants.sort(
+        (a, b) => b.initiative - a.initiative,
+      );
       setParticipants(sortedParticipants);
-      setNewParticipant({ name: '', initiative: 0, hp: 0, ac: '' });
+      setNewParticipant({ name: "", initiative: 0, hp: 0, ac: "" });
     }
   };
 
@@ -51,15 +70,21 @@ function App() {
   };
 
   const removeParticipant = (id: number) => {
-    setParticipants(participants.filter(p => p.id !== id));
+    setParticipants(participants.filter((p) => p.id !== id));
   };
 
   const increaseHP = (id: number) => {
-    setParticipants(participants.map(p => p.id === id ? { ...p, hp: p.hp + 1 } : p));
+    setParticipants(
+      participants.map((p) => (p.id === id ? { ...p, hp: p.hp + 1 } : p)),
+    );
   };
 
   const decreaseHP = (id: number) => {
-    setParticipants(participants.map(p => p.id === id ? { ...p, hp: Math.max(0, p.hp - 1) } : p));
+    setParticipants(
+      participants.map((p) =>
+        p.id === id ? { ...p, hp: Math.max(0, p.hp - 1) } : p,
+      ),
+    );
   };
 
   return (
@@ -81,7 +106,9 @@ function App() {
       />
 
       <div>
-        <button onClick={clearTable}>Clear</button>
+        <button type="button" onClick={clearTable}>
+          Clear
+        </button>
       </div>
     </div>
   );
