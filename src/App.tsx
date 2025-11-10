@@ -88,8 +88,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>D&D Initiative Tracker</h1>
+    <div className="w-full flex flex-col items-center justify-center min-h-screen p-4 space-y-6">
+      <h1 className="text-3xl font-bold text-center">D&D Initiative Tracker</h1>
 
       <AddParticipantForm
         newParticipant={newParticipant}
@@ -105,8 +105,12 @@ function App() {
         removeParticipant={removeParticipant}
       />
 
-      <div>
-        <button type="button" onClick={clearTable}>
+      <div className="text-center">
+        <button
+          type="button"
+          onClick={clearTable}
+          className="rounded-md bg-red-500 px-4 py-2 text-white transition-colors hover:bg-red-600"
+        >
           Clear
         </button>
       </div>

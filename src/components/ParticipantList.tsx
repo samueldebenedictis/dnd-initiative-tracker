@@ -22,41 +22,53 @@ const ParticipantList: React.FC<Props> = ({
   removeParticipant,
 }) => {
   return (
-    <div>
-      <table>
+    <div className="mx-auto max-w-2xl rounded-lg bg-white p-4 shadow-md">
+      <table className="w-full table-auto">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th></th>
+          <tr className="border-b">
+            <th className="px-4 py-2 text-left">#</th>
+            <th className="px-4 py-2 text-left">Name</th>
+            <th className="px-4 py-2 text-left">Details</th>
           </tr>
         </thead>
         <tbody>
           {participants.map((p, index) => (
-            <tr key={p.id}>
-              <td>{index + 1}</td>
-              <td>{p.name}</td>
-              <td>
-                <div>
+            <tr key={p.id} className="border-b">
+              <td className="px-4 py-2">{index + 1}</td>
+              <td className="px-4 py-2 font-semibold">{p.name}</td>
+              <td className="px-4 py-2">
+                <div className="space-y-1">
                   <p>
-                    <span>Initiative: </span>
+                    <span className="font-medium">Initiative: </span>
                     {p.initiative}
                   </p>
                   <p>
-                    <span>AC: </span>
+                    <span className="font-medium">AC: </span>
                     {p.ac}
                   </p>
-                  <p>
-                    <span>HP: </span>
+                  <p className="flex items-center gap-2">
+                    <span className="font-medium">HP: </span>
                     {p.hp}
-                    <button type="button" onClick={() => decreaseHP(p.id)}>
+                    <button
+                      type="button"
+                      onClick={() => decreaseHP(p.id)}
+                      className="rounded bg-red-500 px-2 py-1 text-white hover:bg-red-600"
+                    >
                       -
                     </button>
-                    <button type="button" onClick={() => increaseHP(p.id)}>
+                    <button
+                      type="button"
+                      onClick={() => increaseHP(p.id)}
+                      className="rounded bg-green-500 px-2 py-1 text-white hover:bg-green-600"
+                    >
                       +
                     </button>
                   </p>
-                  <button type="button" onClick={() => removeParticipant(p.id)}>
+                  <button
+                    type="button"
+                    onClick={() => removeParticipant(p.id)}
+                    className="rounded bg-gray-500 px-3 py-1 text-white hover:bg-gray-600"
+                  >
                     Remove
                   </button>
                 </div>
