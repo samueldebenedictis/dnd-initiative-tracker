@@ -21,7 +21,7 @@ const AddParticipantForm: React.FC<Props> = ({
   rollInitiative,
 }) => {
   return (
-    <div className="w-full max-w-[800px] rounded-lg bg-white p-4 shadow-md">
+    <div className="w-full max-w-[800px] bg-amber-50 p-4 border-2 border-solid border-red-900">
       <div className="mb-4">
         <input
           type="text"
@@ -29,7 +29,7 @@ const AddParticipantForm: React.FC<Props> = ({
           placeholder="Name (Player/Monster)"
           value={newParticipant.name}
           onChange={handleInputChange}
-          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-red-900 placeholder-amber-900 w-full border border-red-900 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-900 bg-amber-100"
         />
       </div>
       <div className="mb-4 flex flex-col gap-2 sm:flex-row">
@@ -48,7 +48,7 @@ const AddParticipantForm: React.FC<Props> = ({
         <button
           type="button"
           onClick={rollInitiative}
-          className="rounded-md bg-green-500 px-4 py-2 text-white transition-colors hover:bg-green-600"
+          className=" bg-green-900 px-4 py-2 text-amber-100 transition-colors hover:bg-green-800"
         >
           Roll D20
         </button>

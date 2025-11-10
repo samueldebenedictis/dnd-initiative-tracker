@@ -88,8 +88,9 @@ function App() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-screen p-4 space-y-6">
-      <h1 className="text-3xl font-bold text-center">D&D Initiative Tracker</h1>
+    <div className="w-full flex flex-col items-center justify-center min-h-screen p-4 space-y-6 bg-amber-100">
+      <h1 className="text-3xl font-bold text-red-900 text-center uppercase">
+        <span className="text-4xl">D&D</span> <span className="text-4xl">I</span>nitiative <span className="text-4xl">T</span>racker</h1>
 
       <AddParticipantForm
         newParticipant={newParticipant}
