@@ -21,7 +21,7 @@ const AddParticipantForm: React.FC<Props> = ({
   rollInitiative,
 }) => {
   return (
-    <div className="mx-auto max-w-2xl rounded-lg bg-white p-4 shadow-md">
+    <div className="w-full max-w-[800px] rounded-lg bg-white p-4 shadow-md">
       <div className="mb-4">
         <input
           type="text"

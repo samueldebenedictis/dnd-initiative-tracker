@@ -22,7 +22,7 @@ const ParticipantList: React.FC<Props> = ({
   removeParticipant,
 }) => {
   return (
-    <div className="mx-auto max-w-2xl rounded-lg bg-white p-4 shadow-md">
+    <div className="w-full max-w-[800px] rounded-lg bg-gray-700 p-4">
       <table className="w-full table-auto">
         <thead>
           <tr className="border-b">
