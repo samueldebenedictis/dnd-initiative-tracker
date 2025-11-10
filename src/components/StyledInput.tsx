@@ -1,10 +1,9 @@
 import type React from "react";
 
-interface StyledInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  // Add any additional props if needed
-}
-
-const StyledInput: React.FC<StyledInputProps> = ({ className, ...props }) => {
+const StyledInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
+  ...props
+}) => {
   return (
     <input
       {...props}

@@ -114,9 +114,10 @@ function App() {
         <StyledButton
           type="button"
           onClick={clearTable}
-          className="w-full bg-red-900 hover:bg-red-800"
+          className="uppercase w-full w-full bg-red-900 hover:bg-red-800"
         >
-          REMOVE ALL
+          <span className="text-xl">R</span>emove{" "}
+          <span className="text-xl">A</span>ll{""}
         </StyledButton>
       </div>
     </div>

@@ -80,8 +80,8 @@ const AddParticipantForm: React.FC<Props> = ({
           onClick={addParticipant}
           className="uppercase w-full bg-green-900 hover:bg-green-800"
         >
-          <span className="text-xl">A</span>
-          DD <span className="text-xl">P</span>articipant
+          <span className="text-xl">A</span>dd{" "}
+          <span className="text-xl">P</span>articipant
         </StyledButton>
       </div>
     </div>

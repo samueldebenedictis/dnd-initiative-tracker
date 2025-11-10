@@ -1,11 +1,9 @@
 import type React from "react";
 
-interface StyledButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  // Add any additional props if needed
-}
-
-const StyledButton: React.FC<StyledButtonProps> = ({ className, ...props }) => {
+const StyledButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  className,
+  ...props
+}) => {
   return (
     <button
       {...props}
