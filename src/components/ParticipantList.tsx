@@ -1,4 +1,5 @@
 import type React from "react";
+import StyledButton from "./StyledButton";
 
 interface Participant {
   id: number;
@@ -22,62 +23,66 @@ const ParticipantList: React.FC<Props> = ({
   removeParticipant,
 }) => {
   return (
-    <div className="w-full max-w-[800px] rounded-lg bg-gray-700 p-4">
-      <table className="w-full table-auto">
-        <thead>
-          <tr className="border-b">
-            <th className="px-4 py-2 text-left">#</th>
-            <th className="px-4 py-2 text-left">Name</th>
-            <th className="px-4 py-2 text-left">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {participants.map((p, index) => (
-            <tr key={p.id} className="border-b">
-              <td className="px-4 py-2">{index + 1}</td>
-              <td className="px-4 py-2 font-semibold">{p.name}</td>
-              <td className="px-4 py-2">
-                <div className="space-y-1">
-                  <p>
-                    <span className="font-medium">Initiative: </span>
-                    {p.initiative}
-                  </p>
-                  <p>
-                    <span className="font-medium">AC: </span>
-                    {p.ac}
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <span className="font-medium">HP: </span>
-                    {p.hp}
-                    <button
-                      type="button"
-                      onClick={() => decreaseHP(p.id)}
-                      className="rounded bg-red-500 px-2 py-1 text-white hover:bg-red-600"
-                    >
-                      -
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => increaseHP(p.id)}
-                      className="rounded bg-green-500 px-2 py-1 text-white hover:bg-green-600"
-                    >
-                      +
-                    </button>
-                  </p>
-                  <button
+    <table className="border-2 border-red-900 w-full max-w-[800px] bg-amber-50 p-4 border-collapse border border-gray-400 text-red-900 w-full table-auto">
+      <thead className="bg-amber-100">
+        <tr className="">
+          <th className="px-2 py-2 text-center font-bold">#</th>
+          <th className="px-2 py-2 text-center font-bold">NAME</th>
+          <th className="px-2 py-2 text-center">DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {participants.map((p, index) => (
+          <tr key={p.id} className="border-2 border-red-900">
+            <td className="px-2 py-2 text-center">{index + 1}</td>
+            <td className="px-4 py-2 font-semibold">
+              <div className="grid">
+                <span className="uppercase text-center my-2 border-b-2 border-red-800">
+                  {p.name}
+                </span>
+                <StyledButton
+                  type="button"
+                  onClick={() => removeParticipant(p.id)}
+                  className="text-xs bg-red-900 hover:bg-red-800"
+                >
+                  <span className="text-sm">R</span>EMOVE
+                </StyledButton>
+              </div>
+            </td>
+            <td className="px-4 py-2">
+              <div className="space-y-1 text-center">
+                <p>
+                  <span className="font-medium">Initiative: </span>
+                  {p.initiative}
+                </p>
+                <p className="flex items-center justify-center gap-2 text-center">
+                  <StyledButton
                     type="button"
-                    onClick={() => removeParticipant(p.id)}
-                    className="rounded bg-gray-500 px-3 py-1 text-white hover:bg-gray-600"
+                    onClick={() => decreaseHP(p.id)}
+                    className="px-3 rounded-full font-bold text-xs bg-red-900 hover:bg-red-800"
                   >
-                    Remove
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                    -
+                  </StyledButton>
+                  <span className="font-medium">HP: </span>
+                  {p.hp}
+                  <StyledButton
+                    type="button"
+                    onClick={() => increaseHP(p.id)}
+                    className="px-3 rounded-full font-bold text-xs bg-green-900 hover:bg-green-800"
+                  >
+                    +
+                  </StyledButton>
+                </p>
+                <p>
+                  <span className="font-medium">AC: </span>
+                  {p.ac}
+                </p>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

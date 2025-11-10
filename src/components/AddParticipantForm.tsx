@@ -1,4 +1,6 @@
 import type React from "react";
+import StyledInput from "./StyledInput";
+import StyledButton from "./StyledButton";
 
 interface NewParticipant {
   name: string;
@@ -21,19 +23,19 @@ const AddParticipantForm: React.FC<Props> = ({
   rollInitiative,
 }) => {
   return (
-    <div className="w-full max-w-[800px] bg-amber-50 p-4 border-2 border-solid border-red-900">
+    <div className="w-full max-w-[800px] bg-amber-100 p-4 border-2 border-solid border-red-900">
       <div className="mb-4">
-        <input
+        <StyledInput
           type="text"
           name="name"
           placeholder="Name (Player/Monster)"
           value={newParticipant.name}
           onChange={handleInputChange}
-          className="text-red-900 placeholder-amber-900 w-full border border-red-900 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-900 bg-amber-100"
+          className="w-full"
         />
       </div>
       <div className="mb-4 flex flex-col gap-2 sm:flex-row">
-        <input
+        <StyledInput
           type="number"
           name="initiative"
           placeholder="Initiative Roll"
@@ -43,42 +45,44 @@ const AddParticipantForm: React.FC<Props> = ({
               : undefined
           }
           onChange={handleInputChange}
-          className="flex-1 rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1"
         />
-        <button
+        <StyledButton
           type="button"
           onClick={rollInitiative}
-          className=" bg-green-900 px-4 py-2 text-amber-100 transition-colors hover:bg-green-800"
+          className="uppercase bg-green-900 hover:bg-green-800"
         >
-          Roll D20
-        </button>
+          <span className="text-xl">R</span>
+          oll <span className="text-xl">D20</span>
+        </StyledButton>
       </div>
       <div className="mb-4 flex flex-col gap-2 sm:flex-row">
-        <input
+        <StyledInput
           type="number"
           name="hp"
           placeholder="HP"
           value={newParticipant.hp !== 0 ? newParticipant.hp : undefined}
           onChange={handleInputChange}
-          className="flex-1 rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1"
         />
-        <input
+        <StyledInput
           type="number"
           name="ac"
           placeholder="AC"
           value={newParticipant.ac}
           onChange={handleInputChange}
-          className="flex-1 rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1"
         />
       </div>
-      <div className="text-center">
-        <button
+      <div className="text-center w-full">
+        <StyledButton
           type="button"
           onClick={addParticipant}
-          className="rounded-md bg-blue-500 px-6 py-2 text-white transition-colors hover:bg-blue-600"
+          className="uppercase w-full bg-green-900 hover:bg-green-800"
         >
-          Add Participant
-        </button>
+          <span className="text-xl">A</span>
+          DD <span className="text-xl">P</span>articipant
+        </StyledButton>
       </div>
     </div>
   );

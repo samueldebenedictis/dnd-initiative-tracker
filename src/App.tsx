@@ -2,6 +2,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import AddParticipantForm from "./components/AddParticipantForm";
 import ParticipantList from "./components/ParticipantList";
+import StyledButton from "./components/StyledButton";
 
 interface Participant {
   id: number;
@@ -88,9 +89,12 @@ function App() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-screen p-4 space-y-6 bg-amber-100">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen p-4 space-y-6 bg-amber-50">
       <h1 className="text-3xl font-bold text-red-900 text-center uppercase">
-        <span className="text-4xl">D&D</span> <span className="text-4xl">I</span>nitiative <span className="text-4xl">T</span>racker</h1>
+        <span className="text-4xl">D&D</span>{" "}
+        <span className="text-4xl">I</span>nitiative{" "}
+        <span className="text-4xl">T</span>racker
+      </h1>
 
       <AddParticipantForm
         newParticipant={newParticipant}
@@ -106,14 +110,14 @@ function App() {
         removeParticipant={removeParticipant}
       />
 
-      <div className="text-center">
-        <button
+      <div className="w-full max-w-[800px] text-center">
+        <StyledButton
           type="button"
           onClick={clearTable}
-          className="rounded-md bg-red-500 px-4 py-2 text-white transition-colors hover:bg-red-600"
+          className="w-full bg-red-900 hover:bg-red-800"
         >
-          Clear
-        </button>
+          REMOVE ALL
+        </StyledButton>
       </div>
     </div>
   );
